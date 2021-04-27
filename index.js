@@ -1,44 +1,20 @@
-// function User() {}
-// console.log(User.prototype); // { constructor: User }
-
-// const mango = new User();
-// console.log(User.prototype.isPrototypeOf(mango)); // true
-
-// function User({ name, email }) {
-//   this.name = name;
-//   this.email = email;
-// }
-
-// User.prototype.getEmail = function () {
-//   return this.email;
-// };
-
-// User.prototype.changeEmail = function (newEmail) {
-//   this.email = newEmail;
-// };
-
-// const mango = new User({ name: 'Манго', email: 'mango@mail.com' });
-
-// console.log(mango.getEmail()); // mango@mail.com
-// mango.changeEmail('mango@supermail.com');
-// console.log(mango.getEmail()); // mango@supermail.com
-
-function Car({ brand, model, price }) {
-  this.brand = brand;
-  this.model = model;
-  this.price = price;
+function Storage(items) {
+  this.items = items;
 }
-
-Car.prototype.getPrice = function () {
-  return this.price;
+Storage.prototype.getItems = function () {
+  return this.items;
 };
-
-Car.prototype.changePrice = function (newPrice) {
-  return (this.price = newPrice);
+Storage.prototype.addItem = function (addItem) {
+  return this.items.push(addItem);
 };
-
-const newCar = new Car({ brand: "Audi", model: "Q3", price: 36000 });
-
-console.log(newCar.getPrice());
-
-console.log(newCar.changePrice(35000));
+Storage.prototype.removeItem = function (removeItem) {
+  const indexEl = this.items.indexOf(removeItem);
+  return this.items.splice(indexEl, 1);
+};
+// Пиши код выше этой строки
+const storage = new Storage(["Нанитоиды", "Пролонгер", "Антигравитатор"]);
+console.log(storage.getItems()); // ["Нанитоиды", "Пролонгер", "Антигравитатор"]
+storage.addItem("Дроид");
+console.log(storage.getItems()); // ["Нанитоиды", "Пролонгер", "Антигравитатор", "Дроид"]
+storage.removeItem("Пролонгер");
+console.log(storage.getItems()); // ["Нанитоиды", "Антигравитатор", "Дроид"]
