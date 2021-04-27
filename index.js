@@ -1,24 +1,29 @@
-class Storage {
-  #items;
-  constructor(items) {
-    this.#items = items;
+class StringBuilder {
+  #value;
+  constructor(baseValue) {
+    this.#value = baseValue;
   }
-  getItems() {
-    return this.#items;
+  getValue() {
+    return this.#value;
   }
-  addItem(newItem) {
-    this.#items.push(newItem);
+  padEnd(str) {
+    this.#value += str;
   }
-  removeItem(item) {
-    const itemIndex = this.#items.indexOf(item);
-    this.#items.splice(itemIndex, 1);
+  padStart(str) {
+    this.#value = str + this.#value;
+  }
+  padBoth(str) {
+    this.padStart(str);
+    this.padEnd(str);
   }
 }
 
 // Пиши код выше этой строки
-const storage = new Storage(["Нанитоиды", "Пролонгер", "Антигравитатор"]);
-console.log(storage.getItems()); // ["Нанитоиды", "Пролонгер", "Антигравитатор"]
-storage.addItem("Дроид");
-console.log(storage.getItems()); // ["Нанитоиды", "Пролонгер", "Антигравитатор", "Дроид"]
-storage.removeItem("Пролонгер");
-console.log(storage.getItems()); // ["Нанитоиды", "Антигравитатор", "Дроид"]
+const builder = new StringBuilder(".");
+console.log(builder.getValue()); // '.'
+builder.padStart("^");
+console.log(builder.getValue()); // '^.'
+builder.padEnd("^");
+console.log(builder.getValue()); // '^.^'
+builder.padBoth("=");
+console.log(builder.getValue()); // '=^.^='
