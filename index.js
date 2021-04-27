@@ -1,28 +1,18 @@
-// const animal = {
-//   legs: 4,
-// };
-// const dog = Object.create(animal);
-// dog.name = "Манго";
-
-// console.log(dog); // { name: 'Манго', __proto__: animal }
-// console.log(animal.isPrototypeOf(dog)); // true
-
-// console.log(dog.hasOwnProperty('name')); // true
-// console.log(dog.name); // 'Манго'
-
-// console.log(dog.hasOwnProperty('legs')); // false
-// console.log(dog.legs); // 4
-
-const parent = {
-  name: "Stacey",
-  surname: "Moore",
-  age: 54,
+const ancestor = {
+  name: "Paul",
+  age: 83,
+  surname: "Dawson",
   heritage: "Irish",
 };
 // Пиши код ниже этой строки
 
-const child = Object.create(parent);
+const parent = Object.create(ancestor);
+parent.name = "Stacey";
+parent.surname = "Moore";
+parent.age = 54;
 
-// Пиши код выше этой строки
+const child = Object.create(parent);
 child.name = "Jason";
 child.age = 27;
+
+// Пиши код выше этой строки
