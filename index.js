@@ -1,40 +1,24 @@
-// class User {
-//   // Необязательное объявление публичных свойств
-//   name;
-//   // Обязательное объявление приватных свойств
-//   #email;
-
-//   constructor({ name, email }) {
-//     this.name = name;
-//     this.#email = email;
-//   }
-
-//   getEmail() {
-//     return this.#email;
-//   }
-
-//   changeEmail(newEmail) {
-//     this.#email = newEmail;
-//   }
-// }
-
-// const mango = new User({ name: "Манго", email: "mango@mail.com" });
-
-// mango.changeEmail("mango@supermail.com");
-// console.log(mango.getEmail()); // mango@supermail.com
-// console.log(mango.#email); // Будет ошибка, это приватное свойство
-
-class Car {
-  #brand;
-  constructor({ brand, model, price }) {
-    this.#brand = brand;
-    this.model = model;
-    this.price = price;
+class Storage {
+  #items;
+  constructor(items) {
+    this.#items = items;
   }
-  getBrand() {
-    return this.#brand;
+  getItems() {
+    return this.#items;
   }
-  changeBrand(newBrand) {
-    return (this.#brand = newBrand);
+  addItem(newItem) {
+    this.#items.push(newItem);
+  }
+  removeItem(item) {
+    const itemIndex = this.#items.indexOf(item);
+    this.#items.splice(itemIndex, 1);
   }
 }
+
+// Пиши код выше этой строки
+const storage = new Storage(["Нанитоиды", "Пролонгер", "Антигравитатор"]);
+console.log(storage.getItems()); // ["Нанитоиды", "Пролонгер", "Антигравитатор"]
+storage.addItem("Дроид");
+console.log(storage.getItems()); // ["Нанитоиды", "Пролонгер", "Антигравитатор", "Дроид"]
+storage.removeItem("Пролонгер");
+console.log(storage.getItems()); // ["Нанитоиды", "Антигравитатор", "Дроид"]
