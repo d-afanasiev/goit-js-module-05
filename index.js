@@ -1,43 +1,40 @@
-// function User({ name, email }) {
-//   this.name = name;
-//   this.email = email;
-// }
-
-// User.prototype.getEmail = function () {
-//   return this.email;
-// };
-
-// User.prototype.changeEmail = function (newEmail) {
-//   this.email = newEmail;
-// };
-
 // class User {
-//   constructor({ name, breed }) {
+//   // Необязательное объявление публичных свойств
+//   name;
+//   // Обязательное объявление приватных свойств
+//   #email;
+
+//   constructor({ name, email }) {
 //     this.name = name;
-//     this.breed = breed;
+//     this.#email = email;
 //   }
 
-//   // Аналог User.prototype.getEmail
 //   getEmail() {
-//     return this.email;
+//     return this.#email;
 //   }
 
-//   // Аналог User.prototype.changeEmail
 //   changeEmail(newEmail) {
-//     this.email = newEmail;
+//     this.#email = newEmail;
 //   }
 // }
+
+// const mango = new User({ name: "Манго", email: "mango@mail.com" });
+
+// mango.changeEmail("mango@supermail.com");
+// console.log(mango.getEmail()); // mango@supermail.com
+// console.log(mango.#email); // Будет ошибка, это приватное свойство
 
 class Car {
+  #brand;
   constructor({ brand, model, price }) {
-    this.brand = brand;
+    this.#brand = brand;
     this.model = model;
     this.price = price;
   }
-  getPrice() {
-    return this.price;
+  getBrand() {
+    return this.#brand;
   }
-  changePrice(newPrice) {
-    return (this.price = newPrice);
+  changeBrand(newBrand) {
+    return (this.#brand = newBrand);
   }
 }
