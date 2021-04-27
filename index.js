@@ -21,7 +21,7 @@ const parent = {
 };
 // Пиши код ниже этой строки
 
-const child = {};
+const child = Object.create(parent);
 
 // Пиши код выше этой строки
 child.name = "Jason";
