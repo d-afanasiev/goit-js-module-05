@@ -1,18 +1,30 @@
-const ancestor = {
-  name: "Paul",
-  age: 83,
-  surname: "Dawson",
-  heritage: "Irish",
-};
-// Пиши код ниже этой строки
+// function User() {
+//   // Тело функции
+// }
 
-const parent = Object.create(ancestor);
-parent.name = "Stacey";
-parent.surname = "Moore";
-parent.age = 54;
+// const mango = new User();
+// console.log(mango); // {}
 
-const child = Object.create(parent);
-child.name = "Jason";
-child.age = 27;
+// const poly = new User();
+// console.log(poly); // {}
 
-// Пиши код выше этой строки
+// function User(name, email, age) {
+//   this.name = name;
+//   this.email = email;
+// }
+
+// const mango = new User('Манго', 'mango@mail.com');
+// console.log(mango); // { name: 'Манго', email: 'mango@mail.com' }
+
+// const poly = new User('Поли', 'poly@mail.com');
+// console.log(poly); // { name: 'Поли', email: 'poly@mail.com' }
+
+function Car(brand, model, price) {
+  this.brand = brand;
+  this.model = model;
+  this.price = price;
+}
+
+const newCar = new Car("Audi", "Q3", 36000);
+
+console.log(newCar);
