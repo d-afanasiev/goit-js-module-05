@@ -3,29 +3,41 @@
 //   this.email = email;
 // }
 
-// class User {
-//   // Необязательное объявление публичных свойств
-//   name;
-//   email;
+// User.prototype.getEmail = function () {
+//   return this.email;
+// };
 
-//   // Аналог функции-конструктора
-//   constructor({ name, email }) {
-//     // Инициализация объявленных свойств
+// User.prototype.changeEmail = function (newEmail) {
+//   this.email = newEmail;
+// };
+
+// class User {
+//   constructor({ name, breed }) {
 //     this.name = name;
-//     this.email = email;
+//     this.breed = breed;
+//   }
+
+//   // Аналог User.prototype.getEmail
+//   getEmail() {
+//     return this.email;
+//   }
+
+//   // Аналог User.prototype.changeEmail
+//   changeEmail(newEmail) {
+//     this.email = newEmail;
 //   }
 // }
 
-// const mango = new User({ name: "Манго", email: "mango@mail.com" });
-
 class Car {
-  brand;
-  model;
-  price;
-
   constructor({ brand, model, price }) {
     this.brand = brand;
     this.model = model;
     this.price = price;
+  }
+  getPrice() {
+    return this.price;
+  }
+  changePrice(newPrice) {
+    return (this.price = newPrice);
   }
 }
