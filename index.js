@@ -1,41 +1,47 @@
 // class User {
-//   static #takenEmails = [];
+//   email;
 
-//   static isEmailTaken(email) {
-//     return User.#takenEmails.includes(email);
+//   constructor(email) {
+//     this.email = email;
 //   }
 
-//   #email;
+//   get email() {
+//     return this.email;
+//   }
 
-//   constructor({ email }) {
-//     this.#email = email;
-//     User.#takenEmails.push(email);
+//   set email(newEmail) {
+//     this.email = newEmail;
 //   }
 // }
 
-// const mango = new User({ email: "mango@mail.com" });
+// class ContentWriter extends User {
+//   // Тело класса ContentWriter
+// }
 
-// console.log(User.isEmailTaken("poly@mail.com")); // false
+// const writer = new ContentWriter("mango@mail.com");
+// console.log(writer); // { email: 'mango@mail.com' }
+// console.log(writer.email); // 'mango@mail.com'
 
-// console.log(User.isEmailTaken("mango@mail.com")); // true
+class User {
+  email;
 
-class Car {
-  static #MAX_PRICE = 50000;
-  // Пиши код ниже этой строки
-  static checkPrice(price) {
-    if (price < Car.#MAX_PRICE) {
-      return "Всё хорошо, цена в порядке.";
-    }
-    return "Внимание! Цена превышает допустимую.";
+  constructor(email) {
+    this.email = email;
   }
-  // Пиши код выше этой строки
-  constructor({ price }) {
-    this.price = price;
+
+  get email() {
+    return this.email;
+  }
+
+  set email(newEmail) {
+    this.email = newEmail;
   }
 }
+// Пиши код ниже этой строки
 
-const audi = new Car({ price: 36000 });
-const bmw = new Car({ price: 64000 });
-
-console.log(Car.checkPrice(audi.price)); // Всё хорошо, цена в порядке.
-console.log(Car.checkPrice(bmw.price)); // Внимание! Цена превышает допустимую.
+class Admin extends User {
+  static AccessLevel = {
+    BASIC: "basic",
+    SUPERUSER: "superuser",
+  };
+}
