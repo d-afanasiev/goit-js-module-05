@@ -1,69 +1,41 @@
 // class User {
-//   // Объявление и инициализация статического свойства
-//   static TYPES = {
-//     ADMIN: "admin",
-//     EDITOR: "editor",
-//   };
+//   static #takenEmails = [];
+
+//   static isEmailTaken(email) {
+//     return User.#takenEmails.includes(email);
+//   }
+
 //   #email;
-//   #type;
 
-//   constructor({ email, type }) {
+//   constructor({ email }) {
 //     this.#email = email;
-//     this.#type = type;
-//   }
-
-//   get type() {
-//     return this.#type;
-//   }
-
-//   set type(newType) {
-//     if (User.TYPES[newType] === undefined) {
-//       console.log("Ошибка! Такого типа пользователя не существет");
-//       return;
-//     }
-
-//     this.#type = newType;
+//     User.#takenEmails.push(email);
 //   }
 // }
 
-// const mango = new User({
-//   email: "mango@mail.com",
-//   type: User.TYPES.ADMIN,
-// });
+// const mango = new User({ email: "mango@mail.com" });
 
-// console.log(mango.TYPES); // undefined
-// console.log(User.TYPES); // { ADMIN: 'admin', EDITOR: 'editor' }
+// console.log(User.isEmailTaken("poly@mail.com")); // false
 
-// console.log(mango.type); // admin
-// mango.type = User.TYPES.EDITOR;
-// console.log(mango.type); // editor
+// console.log(User.isEmailTaken("mango@mail.com")); // true
 
 class Car {
+  static #MAX_PRICE = 50000;
   // Пиши код ниже этой строки
-  static MAX_PRICE = 50000;
-  #price;
-
-  constructor({ price }) {
-    this.#price = price;
-  }
-
-  get price() {
-    return this.#price;
-  }
-
-  set price(newPrice) {
-    if (newPrice < Car.MAX_PRICE) {
-      this.#price = newPrice;
+  static checkPrice(price) {
+    if (price < Car.#MAX_PRICE) {
+      return "Всё хорошо, цена в порядке.";
     }
+    return "Внимание! Цена превышает допустимую.";
   }
   // Пиши код выше этой строки
+  constructor({ price }) {
+    this.price = price;
+  }
 }
 
-const audi = new Car({ price: 35000 });
-console.log(audi.price); // 35000
+const audi = new Car({ price: 36000 });
+const bmw = new Car({ price: 64000 });
 
-audi.price = 49000;
-console.log(audi.price); // 49000
-
-audi.price = 51000;
-console.log(audi.price); // 49000
+console.log(Car.checkPrice(audi.price)); // Всё хорошо, цена в порядке.
+console.log(Car.checkPrice(bmw.price)); // Внимание! Цена превышает допустимую.
