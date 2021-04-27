@@ -1,20 +1,25 @@
-function Storage(items) {
-  this.items = items;
+function StringBuilder(baseValue) {
+  this.value = baseValue;
 }
-Storage.prototype.getItems = function () {
-  return this.items;
+StringBuilder.prototype.getValue = function () {
+  return this.value;
 };
-Storage.prototype.addItem = function (addItem) {
-  return this.items.push(addItem);
+StringBuilder.prototype.padStart = function (str) {
+  return (this.value = `${str}${this.value}`);
 };
-Storage.prototype.removeItem = function (removeItem) {
-  const indexEl = this.items.indexOf(removeItem);
-  return this.items.splice(indexEl, 1);
+StringBuilder.prototype.padEnd = function (str) {
+  return (this.value = `${this.value}${str}`);
 };
+StringBuilder.prototype.padBoth = function (str) {
+  return (this.value = `${str}${this.value}${str}`);
+};
+
 // Пиши код выше этой строки
-const storage = new Storage(["Нанитоиды", "Пролонгер", "Антигравитатор"]);
-console.log(storage.getItems()); // ["Нанитоиды", "Пролонгер", "Антигравитатор"]
-storage.addItem("Дроид");
-console.log(storage.getItems()); // ["Нанитоиды", "Пролонгер", "Антигравитатор", "Дроид"]
-storage.removeItem("Пролонгер");
-console.log(storage.getItems()); // ["Нанитоиды", "Антигравитатор", "Дроид"]
+const builder = new StringBuilder(".");
+console.log(builder.getValue()); // '.'
+builder.padStart("^");
+console.log(builder.getValue()); // '^.'
+builder.padEnd("^");
+console.log(builder.getValue()); // '^.^'
+builder.padBoth("=");
+console.log(builder.getValue()); // '=^.^='
