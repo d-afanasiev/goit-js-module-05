@@ -15,11 +15,17 @@
 // }
 
 // class ContentWriter extends User {
-//   // Тело класса ContentWriter
+//   posts;
+
+//   constructor({ email, posts }) {
+//     // Вызов конструктора родительского класса User
+//     super(email);
+//     this.posts = posts;
+//   }
 // }
 
-// const writer = new ContentWriter("mango@mail.com");
-// console.log(writer); // { email: 'mango@mail.com' }
+// const writer = new ContentWriter({ email: "mango@mail.com", posts: [] });
+// console.log(writer); // { email: 'mango@mail.com', posts: [] }
 // console.log(writer.email); // 'mango@mail.com'
 
 class User {
@@ -37,11 +43,27 @@ class User {
     this.email = newEmail;
   }
 }
-// Пиши код ниже этой строки
 
 class Admin extends User {
+  // Пиши код ниже этой строки
+  accessLevel;
   static AccessLevel = {
     BASIC: "basic",
     SUPERUSER: "superuser",
   };
+
+  constructor({ email, accessLevel }) {
+    super(email);
+    this.accessLevel = accessLevel;
+  }
+
+  // Пиши код выше этой строки
 }
+
+const mango = new Admin({
+  email: "mango@mail.com",
+  accessLevel: Admin.AccessLevel.SUPERUSER,
+});
+
+console.log(mango.email); // mango@mail.com
+console.log(mango.accessLevel); // superuser
