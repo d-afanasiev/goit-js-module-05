@@ -1,29 +1,69 @@
-class StringBuilder {
-  #value;
-  constructor(baseValue) {
-    this.#value = baseValue;
+// class User {
+//   name;
+//   #email;
+
+//   constructor({ name, email }) {
+//     this.name = name;
+//     this.#email = email;
+//   }
+
+//   // Геттер email
+//   get email() {
+//     return this.#email;
+//   }
+
+//   // Сеттер email
+//   set email(newEmail) {
+//     this.#email = newEmail;
+//   }
+// }
+
+// const mango = new User({ name: 'Манго', email: 'mango@mail.com' });
+// console.log(mango.email); // mango@mail.com
+// mango.email = 'mango@supermail.com';
+// console.log(mango.email); // mango@supermail.com
+
+// set email(newEmail) {
+//   if(newEmail === '') {
+//     console.log('Ошибка! Почта не может быть пустой строкой!');
+//     return;
+//   }
+
+//   this.#email = newEmail;
+// }
+
+class Car {
+  #model;
+  #price;
+  #brand;
+
+  constructor({ brand, model, price }) {
+    this.#brand = brand;
+    this.#model = model;
+    this.#price = price;
   }
-  getValue() {
-    return this.#value;
+
+  get brand() {
+    return this.#brand;
   }
-  padEnd(str) {
-    this.#value += str;
+
+  set brand(newBrand) {
+    this.#brand = newBrand;
   }
-  padStart(str) {
-    this.#value = str + this.#value;
+
+  get model() {
+    return this.#model;
   }
-  padBoth(str) {
-    this.padStart(str);
-    this.padEnd(str);
+
+  set model(newModel) {
+    this.#model = newModel;
+  }
+
+  get price() {
+    return this.#price;
+  }
+
+  set price(newPrice) {
+    this.#price = newPrice;
   }
 }
-
-// Пиши код выше этой строки
-const builder = new StringBuilder(".");
-console.log(builder.getValue()); // '.'
-builder.padStart("^");
-console.log(builder.getValue()); // '^.'
-builder.padEnd("^");
-console.log(builder.getValue()); // '^.^'
-builder.padBoth("=");
-console.log(builder.getValue()); // '=^.^='
